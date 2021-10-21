@@ -1,0 +1,22 @@
+<ion-item no-line class="fixed">
+  <ion-label>{{ resultCount }} results found</ion-label>
+  <ion-select interface='popover' placeholder="Featured">
+    <ion-select-option value="1">Gadgets</ion-select-option>
+    <ion-select-option value="2">Clothing</ion-select-option>
+
+  </ion-select>
+  <div>
+    <ion-button (click)="onChangeViewClick(false)" color="{{ isListView? 'light': 'tertiary' }}">
+      <ion-icon name="grid-outline"></ion-icon>
+    </ion-button>
+    <ion-button (click)="onChangeViewClick(true)" color="{{ isListView? 'tertiary': 'light' }}">
+      <ion-icon name="list-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-item>
+
+<ion-row>
+  <ion-col size="12">
+    <ion-searchbar (ionInput)="onSearchInput($event)"></ion-searchbar>
+  </ion-col>
+</ion-row>

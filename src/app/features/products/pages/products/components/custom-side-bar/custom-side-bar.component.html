@@ -1,0 +1,56 @@
+<ion-row>
+  <ion-col>
+    <div class='customer-dropdown'>
+      <ion-select interface='popover' placeholder="Guest Customer">
+        <ion-select-option value="1">Test Customer</ion-select-option>
+        <ion-select-option value="2">Test2 Customer</ion-select-option>
+      </ion-select>
+    </div>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <hr style="border-bottom: 1px solid; width: 100%; margin-bottom:0;"><br>
+  <ion-item *ngFor="let item of myCart">
+    <ion-row>
+      <ion-col size=''>
+        <ion-label>{{ item.name }}</ion-label>
+        <small>x1</small>
+      </ion-col>
+      <ion-col size=''>
+        <ion-label class="checkout-price">${{ item.price }}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+</ion-row>
+<br>
+<ion-row>
+  <ion-col size="12">
+    <ion-input type="text" placeholder="Discount"></ion-input>
+  </ion-col>
+</ion-row>
+<hr style="border-bottom: 1px solid; width: 100%; margin-bottom:0;"><br>
+<ion-row>
+  <ion-col>
+    <ion-label>Sub Total</ion-label>
+  </ion-col>
+  <ion-col>
+    <ion-label class="sub-total">${{ getTotal() }}</ion-label>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size=''>
+    <ion-label>Discount</ion-label>
+  </ion-col>
+  <ion-col size=''>
+    <ion-label class="discount">-${{ discount }}</ion-label>
+  </ion-col>
+</ion-row>
+<hr style="border-bottom: 1px solid; width: 100%; margin-bottom:0;"><br>
+<ion-row>
+  <ion-col class="ion-text-center" size="12">
+    <ion-button (click)="onCheckoutClick()" color="tertiary">
+      <ion-label>Checkout</ion-label>
+    </ion-button>
+  </ion-col>
+</ion-row>
