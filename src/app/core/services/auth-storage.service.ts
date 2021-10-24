@@ -7,12 +7,14 @@ import { StorageService } from './storage.service';
 })
 export class AuthStorageService {
 
-  private tokenKey = 'hhsa-token';
+  private tokenKey = 'pos_secret';
+  private tokenExpirationKey = 'pos_exp';
 
   constructor(private storageSvc: StorageService) { }
 
   async saveTokenResponse(responseToken: string) {
     await this.storageSvc.set(this.tokenKey, responseToken);
+    await this.storageSvc.set(this.tokenExpirationKey, Date.now());
   }
 
   async purge() {
@@ -23,9 +25,20 @@ export class AuthStorageService {
     return await this.getToken() && !(await this.isTokenExpired());
   }
 
+  // async isAuthenticated(): boolean {
+    
+
+  //   await this.getToken().then(value => {
+  //     return value
+  //   })
+    
+  // }
+
   async isTokenExpired(): Promise<boolean> {
-    const { exp } = await this.getJTWDecoded();
-    return Date.now() >= exp * 1000;
+    // const { exp } = await this.getJTWDecoded();
+    // return Date.now() >= exp * 1000;
+    const exp = await this.getTokenExp();
+    return Date.now() != Number(exp) * 1000;
   }
 
   async getJTWDecoded(): Promise<IJWTDecoded> {
@@ -35,6 +48,11 @@ export class AuthStorageService {
   async getToken(): Promise<string> {
     return await this.storageSvc.get(this.tokenKey);
   }
+
+  async getTokenExp(): Promise<string> {
+    return await this.storageSvc.get(this.tokenExpirationKey);
+  }
+
 
   parseJwt(token: string) {
     if (token === null || token.length === 0) {

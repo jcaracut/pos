@@ -11,17 +11,17 @@ export class AuthGuard implements CanActivate {
 
   constructor(private router: Router, private authStorageSvc: AuthStorageService, private alertController: AlertController,) { }
 
-
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authStorageSvc.isAuthenticated().then(value => {
+      console.log("loginnn");
       if (value) {
         return true;
       }
       // not logged in so redirect to login page with the return url and return false
-      // this.router.navigate(['/login']);
-      this.presentAlertConfirm();
+      this.router.navigate(['/login']);
+      
       return false;
 
     });
@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       header: 'Message',
-      message: 'Inorder to view your personalized deals please login.',
+      message: 'Session expired! Please login again.',
       buttons: [
         {
           text: 'Cancel',

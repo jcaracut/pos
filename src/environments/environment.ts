@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API: 'https://beta.thesociety32.com/'
+  API: 'https://beta.thesociety32.com'
 };
 
 /*
