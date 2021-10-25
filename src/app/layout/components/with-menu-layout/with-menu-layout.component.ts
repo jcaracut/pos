@@ -8,27 +8,27 @@ import { Subscription } from 'rxjs';
   templateUrl: './with-menu-layout.component.html',
   styleUrls: ['./with-menu-layout.component.scss'],
 })
-export class WithMenuLayoutComponent implements OnInit, OnDestroy {
+export class WithMenuLayoutComponent implements OnInit {
 
   routerSubscription: Subscription;
-  constructor(private router: Router, private menu: MenuController) { }
+  constructor(private router: Router) { }
+
+  public pages = [
+    { title: 'Customers', url: '/cutomers', icon: 'mail' },
+    { title: 'Products', url: '/products', icon: 'paper-plane' },
+    { title: 'Sales', url: '/sales', icon: 'heart' },
+    { title: 'Reports', url: '/reports', icon: 'archive' },
+  ];
+  public labels = ['Customers', 'Products', 'Sales', 'Reports',];
 
   ngOnInit() {
-    this.routerSubscription = this.router.events.subscribe(e => {
-      if (e instanceof NavigationEnd) {
-        this.menu.close();
-      }
-    });
   }
 
-  onClickMenu() {
-    this.menu.close();
-  }
+  // onClickMenu() {
+  //   this.menu.close();
+  // }
 
-  ngOnDestroy(): void {
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
-    }
-  }
+  // ngOnDestroy(): void {
+  // }
 
 }

@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { POSStoreModule } from './store/store.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { CoreModule } from './core/core.module';
     }),
     AppRoutingModule,
     POSStoreModule,
+    LayoutModule,
   ],
   providers: [
 

@@ -7,8 +7,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() {}
-  
+
+  options: any = [
+    {
+      name: "Customers",
+      icon: "people-outline",
+      url: "customers"
+    },
+    {
+      name: "Products",
+      icon: "pricetags-outline",
+      url: "products"
+    },
+    {
+      name: "Sales",
+      icon: "stats-chart-outline",
+      url: "sales"
+    },
+    {
+      name: "Reports",
+      icon: "analytics-outline",
+      url: "reports"
+    }
+  ];
+
+  constructor() { }
+
   ngOnInit(): void {
   }
 

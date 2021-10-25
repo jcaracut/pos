@@ -1,63 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
       Home
     </ion-title>
+    <ion-avatar slot="end">
+      <img src="https://scontent.fceb2-1.fna.fbcdn.net/v/t1.18169-9/10647118_327801340758332_2999451663612783021_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=174925&_nc_eui2=AeG5pqCSe3BhsUDvm42J-UwtHdPwtMIvHD8d0_C0wi8cP9d5f0CmtrlVSmwzmbwjUEAwPvOi34ZH5hS4NKGjMSAb&_nc_ohc=-uuCGidbqv4AX9tcZTb&_nc_ht=scontent.fceb2-1.fna&oh=3ad874efa2478da0dd34ef4a0321b8a2&oe=619D7061" />
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div> -->
 
   <ion-grid>
+    <br><br>
     <ion-row>
-      <ion-col size="3">
-      </ion-col>
-      <ion-col size="3" class="ion-text-center">
-        <ion-card>
-          <!-- <img src="assets/icon/customers.png" /> -->
-          <ion-icon name="people-outline" color="tertiary"></ion-icon>
-          <ion-label>Customers</ion-label>
+      <ion-col size="3"></ion-col>
+      <ion-col *ngFor="let item of [1,1];let i = index;" size="3" class="ion-text-center">
+        <ion-card [routerLink]="['/' + options[i].url]" routerLinkActive="router-link-active">
+          <ion-icon name="{{ options[i].icon }}" color="tertiary"></ion-icon>
+          <ion-card-title>{{ options[i].name }}</ion-card-title>
         </ion-card>
       </ion-col>
-      <ion-col size="3" class="ion-text-center">
-        <ion-card class="ion-text-center" routerLink="/products">
-          <!-- <img src="assets/icon/product.png" /> -->
-          <ion-icon name="pricetag-outline" color="tertiary"></ion-icon>
-          <ion-label>Products</ion-label>
-        </ion-card>
-      </ion-col>
-      <ion-col size="3">
-      </ion-col>
+      <ion-col size="3" ></ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="3">
-      </ion-col>
-      <ion-col size="3" class="ion-text-center">
-        <ion-card>
-          <!-- <img src="assets/icon/customers.png" /> -->
-          <ion-icon name="stats-chart-outline"  color="tertiary"></ion-icon>
-          <ion-label>Sales</ion-label>
+      <ion-col size="3"></ion-col>
+      <ion-col *ngFor="let item of [1,1];let i = index;" size="3" class="ion-text-center">
+        <ion-card [routerLink]="['/' + options[i + 2].url]" routerLinkActive="router-link-active">
+          <ion-icon name="{{ options[i + 2].icon }}" color="tertiary"></ion-icon>
+          <ion-card-title>{{ options[i + 2].name }}</ion-card-title>
         </ion-card>
       </ion-col>
-      <ion-col size="3" class="ion-text-center">
-        <ion-card class="ion-text-center" routerLink="/products">
-          <!-- <img src="assets/icon/product.png" /> -->
-          <ion-icon name="analytics-outline" color="tertiary"></ion-icon>
-          <ion-label>Reports</ion-label>
-        </ion-card>
-      </ion-col>
-      <ion-col size="3">
-      </ion-col>
+      <ion-col size="3" ></ion-col>
     </ion-row>
+
   </ion-grid>
 </ion-content>
