@@ -43,45 +43,40 @@ export class HomePage implements OnInit {
 
   async ngOnInit() {
 
-    // // await this.printer.searchBluetooth().then(data => this.list = data);
-    // await this.printer.scanBluetooth().then(data => console.log("scanning", data));
   }
 
-  async scanPrinters() {
-    console.log("searching")
-    await this.printer.searchBluetooth().then(data => this.list = data);
-    await console.log(this.list)
-  }
+  // FOR BLUETOOTH PRINTING
+  // async scanPrinters() {
+  //   console.log("searching")
+  //   await this.printer.searchBluetooth().then(data => this.list = data);
+  //   await console.log(this.list)
+  // }
 
-  connectPrinter(printer){
-    this.subscription = this.printer.connectBluetooth(printer).subscribe();
-  }
+  // connectPrinter(printer){
+  //   this.subscription = this.printer.connectBluetooth(printer).subscribe();
+  // }
 
-  disconnectPrinter(){
-    this.printer.disconnectBluetooth().then((data) => console.log("disconnected", data));
-    this.subscription.unsubscribe();
-  }
+  // disconnectPrinter(){
+  //   this.printer.disconnectBluetooth().then((data) => console.log("disconnected", data));
+  //   this.subscription.unsubscribe();
+  // }
 
-  async print() {
-    console.log("printing")
+  // async print() {
+  //   console.log("printing")
+  //   const blob = new Blob([this.stringVal], { type: 'text/plain; charset=utf-8' });
 
-    const blob = new Blob([this.stringVal], { type: 'text/plain; charset=utf-8' });
+  //   blob.arrayBuffer().then(async buffer => {
+  //     this.printer.printData(buffer).catch((err) => {
+  //       console.log(err)
+  //     }).then(() => {
+  //       console.log("done printing")
+  //     })
+  //   });
+  // }
 
-    blob.arrayBuffer().then(async buffer => {
-      this.printer.printData(buffer).catch((err) => {
-        console.log(err)
-      }).then(() => {
-        console.log("done printing")
-      })
-    });
-
-
-
-  }
-
-  selectPrinter(printer) {
-    console.log("Selected :", printer)
-    this.selectedPrinter = printer;
-  }
+  // selectPrinter(printer) {
+  //   console.log("Selected :", printer)
+  //   this.selectedPrinter = printer;
+  // }
 
 }

@@ -1,0 +1,21 @@
+.slide {
+    padding-top: 50px;
+    img {
+        height: 270px;
+    }
+    h1 {
+        font-weight: bold;
+    }
+    p {
+        font-size: 16px;
+        text-align: center;
+    }
+}
+.button-container {
+    align-items: center;
+    justify-content: center;
+    ion-button {
+        --border-radius: 10px;
+        width: 300px;
+    }
+}

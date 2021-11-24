@@ -12,9 +12,9 @@ export class AuthStorageService {
 
   constructor(private storageSvc: StorageService) { }
 
-  async saveTokenResponse(responseToken: string) {
+  async setToken(responseToken: string) {
     await this.storageSvc.set(this.tokenKey, responseToken);
-    await this.storageSvc.set(this.tokenExpirationKey, Date.now());
+    // await this.storageSvc.set(this.tokenExpirationKey, Date.now());
   }
 
   async purge() {
@@ -22,7 +22,8 @@ export class AuthStorageService {
   }
 
   async isAuthenticated(): Promise<boolean> {
-    return await this.getToken() && !(await this.isTokenExpired());
+    const token = await this.getToken();
+    return token != null || token != undefined;
   }
 
   // async isAuthenticated(): boolean {
@@ -34,36 +35,36 @@ export class AuthStorageService {
     
   // }
 
-  async isTokenExpired(): Promise<boolean> {
+  // async isTokenExpired(): Promise<boolean> {
     // const { exp } = await this.getJTWDecoded();
     // return Date.now() >= exp * 1000;
-    const exp = await this.getTokenExp();
-    return Date.now() != Number(exp) * 1000;
-  }
+  //   const exp = await this.getTokenExp();
+  //   return Date.now() != Number(exp) * 1000;
+  // }
 
-  async getJTWDecoded(): Promise<IJWTDecoded> {
-    return this.parseJwt(await this.getToken());
-  }
+  // async getJTWDecoded(): Promise<IJWTDecoded> {
+  //   return this.parseJwt(await this.getToken());
+  // }
 
   async getToken(): Promise<string> {
     return await this.storageSvc.get(this.tokenKey);
   }
 
-  async getTokenExp(): Promise<string> {
-    return await this.storageSvc.get(this.tokenExpirationKey);
-  }
+  // async getTokenExp(): Promise<string> {
+  //   return await this.storageSvc.get(this.tokenExpirationKey);
+  // }
 
 
-  parseJwt(token: string) {
-    if (token === null || token.length === 0) {
-      return null;
-    }
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('')
-      .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+  // parseJwt(token: string) {
+  //   if (token === null || token.length === 0) {
+  //     return null;
+  //   }
+  //   const base64Url = token.split('.')[1];
+  //   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  //   const jsonPayload = decodeURIComponent(atob(base64).split('')
+  //     .map((c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
 
-    return JSON.parse(jsonPayload);
-  };
+  //   return JSON.parse(jsonPayload);
+  // };
 
 }

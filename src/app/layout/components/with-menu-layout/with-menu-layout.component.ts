@@ -24,6 +24,10 @@ export class WithMenuLayoutComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout(){
+    this.router.navigateByUrl('login');
+  }
+
   // onClickMenu() {
   //   this.menu.close();
   // }

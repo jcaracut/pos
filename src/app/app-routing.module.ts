@@ -7,7 +7,7 @@ const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'welcome',
     pathMatch: 'full'
   },
   {
@@ -36,6 +36,10 @@ const routes: Routes = [
   {
     path: 'checkout',
     loadChildren: () => import('./features/products/pages/checkout/checkout.module').then(m => m.CheckoutPageModule)
+  },
+  {
+    path: 'welcome',
+    loadChildren: () => import('./features/auth/pages/welcome/welcome.module').then( m => m.WelcomePageModule)
   },
 ];
 

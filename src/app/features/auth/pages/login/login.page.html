@@ -28,11 +28,14 @@
 
 <ion-header>
   <ion-toolbar>
-    <!-- <ion-buttons slot="start">
-      <ion-button class="backbtn" routerLink="/welcome" routerDirection="back">
-        <img src="../../assets/back.svg" />
+    <ion-buttons slot="start">
+      <ion-button color="primary" class="backbtn" routerLink="/home" routerDirection="back">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
-    </ion-buttons> -->
+    </ion-buttons>
+    <ion-title>
+      Login
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -43,9 +46,9 @@
       </ion-col>
       <ion-col size="{{ device_width > 480 ? '6': '12' }}">
         <div class="ion-padding container ">
-          <div id="header">
+          <!-- <div id="header">
             <img src="https://logodix.com/logo/1847305.png" />
-          </div>
+          </div> -->
           <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div  class="form-container">
               <ion-item>
@@ -65,7 +68,7 @@
               <ion-checkbox>
               </ion-checkbox>
               <ion-label style="margin-bottom: 10%;"> Remember me</ion-label>
-              <ion-button color="tertiary" expand="block" class="main-button" type="submit">Log In</ion-button>
+              <ion-button color="primary" expand="block" class="main-button" type="submit">Log In</ion-button>
   
               <div class="sign-up">
                 Don't have an account? <ion-button color="dark" fill="clear" routerLink="/signup"
