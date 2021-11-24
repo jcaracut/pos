@@ -14,7 +14,7 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-grid>
+  <!-- <ion-grid>
     <br><br>
     <ion-row>
       <ion-col size="3"></ion-col>
@@ -36,6 +36,27 @@
       </ion-col>
       <ion-col size="3" ></ion-col>
     </ion-row>
+  </ion-grid> -->
 
-  </ion-grid>
+  <ion-textarea [(ngModel)]="stringVal" placeholder="Input text here">
+    
+  </ion-textarea>
+
+  <br><br><br><br>
+
+  <ion-item (click)="connectPrinter(item.address)" *ngFor="let item of list">
+    <ion-label>Connect to {{ item.name }}</ion-label>
+  </ion-item>
+  
+  <ion-button (click)="scanPrinters()" expand="block" fill="clear" shape="round">
+    Scan
+  </ion-button>
+
+  <ion-button (click)="print()" expand="block" fill="clear" shape="round">
+    Print
+  </ion-button>
+
+  <ion-button (click)="disconnectPrinter()" expand="block" fill="clear" shape="round">
+    Disconnect
+  </ion-button>
 </ion-content>

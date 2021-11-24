@@ -11,6 +11,7 @@ import { POSStoreModule } from './store/store.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { LayoutModule } from './layout/layout.module';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +31,7 @@ import { LayoutModule } from './layout/layout.module';
     LayoutModule,
   ],
   providers: [
-
+    BluetoothSerial,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     
   ],

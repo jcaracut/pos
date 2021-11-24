@@ -6,6 +6,9 @@ export const productFeatureKey = 'pos';
 const getState = createFeatureSelector<State>(productFeatureKey);
 
 export const getProducts = createSelector(getState, (state: State) => state.products);
+export const getCustomers = createSelector(getState, (state: State) => state.customers);
+
+
 
 
 

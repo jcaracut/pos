@@ -44,30 +44,31 @@ export class LoginPage implements OnInit {
   get f() { return this.loginForm.controls; }
 
   async login() {
-    if (this.loginForm.valid) {
-      const loading = await this.loadingCtrl.create({
-        message: 'Logging in...',
-      });
-      await loading.present();
-      this.authSvc.login(this.loginForm.value).subscribe(async response => {
-        const user = response.data as User;
-        // const decoded = this.authStorage.parseJwt(user.token);
+    this.router.navigateByUrl("home");
+    // if (this.loginForm.valid) {
+    //   const loading = await this.loadingCtrl.create({
+    //     message: 'Logging in...',
+    //   });
+    //   await loading.present();
+    //   this.authSvc.login(this.loginForm.value).subscribe(async response => {
+    //     const user = response.data as User;
+    //     // const decoded = this.authStorage.parseJwt(user.token);
 
-        // console.log(decoded)
-        await loading.dismiss();
-        await this.authStorage.saveTokenResponse(user.token);
-        this.loginForm.reset();
+    //     // console.log(decoded)
+    //     await loading.dismiss();
+    //     await this.authStorage.saveTokenResponse(user.token);
+    //     this.loginForm.reset();
 
-        this.router.navigateByUrl("home");
-        // this.commonSvc.userChange();
-        // this.navCtrl.navigateRoot('/');
-      }, async err => {
-        console.log(err, "errr")
-        await loading.dismiss();
-        const response = err.error as ICommonResponse;
-        await this.alertSvc.presentAlert('Login failed', err);
-      });
-    }
+    //     this.router.navigateByUrl("home");
+    //     // this.commonSvc.userChange();
+    //     // this.navCtrl.navigateRoot('/');
+    //   }, async err => {
+    //     console.log(err, "errr")
+    //     await loading.dismiss();
+    //     const response = err.error as ICommonResponse;
+    //     await this.alertSvc.presentAlert('Login failed', err);
+    //   });
+    // }
 
   }
 

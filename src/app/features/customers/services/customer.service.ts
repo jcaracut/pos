@@ -13,7 +13,7 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
   
   
-  GetProducts(): Observable<Customer[]>{
+  GetCustomers(): Observable<Customer[]>{
     return this.http.get<Customer[]>(`${this.url}/api/customers`);
   }
 
