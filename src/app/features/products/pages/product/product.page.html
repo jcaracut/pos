@@ -3,7 +3,7 @@
     <ion-buttons slot="start" [routerLink]="['/home']" routerLinkActive="router-link-active" >
       <img height="80" width="80" src="assets/icons/home.png" alt="menu">
     </ion-buttons>
-    <ion-title>Customers({{customers.length}})</ion-title>
+    <ion-title>Products</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,9 +18,10 @@
   </div>
 
   <ion-list lines="none" class="ion-text-center">
-    <ion-item *ngFor="let item of [1,2,3,4,5,6]" class="customer">
-      <img height="100" width="100" src="assets/icons/icon_{{item%2 == 1 ? 8:9}}.png" />
-      <ion-label class="customer">Test&nbsp;&nbsp;&nbsp;{{item}}</ion-label>
+    <ion-item *ngFor="let item of products" class="product">
+      <img height="60" width="60" [src]="item.avatar" />
+      <ion-label class="products">{{item.name }}</ion-label>
+      <ion-label slot="end">{{ item.srp_price.toLocaleString() }}</ion-label>
     </ion-item>
   </ion-list>
 

@@ -1,5 +1,5 @@
 export interface ICommonResponse {
-    successful: boolean;
+    success: boolean;
     data: any;
     message: string;
 }

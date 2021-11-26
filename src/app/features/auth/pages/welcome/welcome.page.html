@@ -1,30 +1,20 @@
-<ion-content>
-  <ion-slides pager="true" [options]='sliderOptions'>
-    <ion-slide >
+<ion-content class="ion-no-padding scrollable-true">
+  <ion-slides *ngIf="slides.length > 0"  pager="true" [options]='sliderOptions'>
+    <ion-slide *ngFor="let item of slides">
       <div class="slide">
-        <img src="assets/icons/icon_1.png" />
-        <h1>Gain total control of your money</h1>
-        <p>Become your own money manager and make every cent count</p>
+        <img [src]="item.icon"/>
+        <h1 class="description">{{ item.title }}</h1>
+        <p class="description">{{ item.description }}</p>
       </div>
     </ion-slide>
-    <ion-slide>
-      <div class="slide">
-        <img src="assets/icons/icon_2.png" />
-        <h1>Know where your money goes</h1>
-        <p>Track your transactions easily, with categories and financial report</p>
-      </div>
-    </ion-slide>
-    <ion-slide>
-      <div class="slide">
-        <img src="assets/icons/icon_3.png" />
-        <h1>Planning ahead</h1>
-        <p>Setup your budget for each category so your in control</p>
-      </div>
-    </ion-slide>
-  </ion-slides>
+  </ion-slides><br><br>
   <div class="button-container">
-    <ion-button color="primary" expand="block" type="submit">Sign Up</ion-button>
-    <ion-button class="login-button" color="tertiary" expand="block" type="submit">Login</ion-button>
+    <ion-button class="button" color="primary" expand="block" >Sign Up</ion-button>
+  </div>
+  <div class="button-container">
+    <ion-button  class="button" color="medium" expand="block" (click)="login()">
+      <ion-label class="label-login">Login</ion-label>
+    </ion-button>
   </div>
 
 </ion-content>

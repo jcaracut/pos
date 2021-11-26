@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { HttpModule } from '@angular/http';
@@ -12,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { LayoutModule } from './layout/layout.module';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { UserProvider } from './core/providers/user.provider';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +21,7 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     CoreModule,
     HttpClientModule,
@@ -31,6 +34,7 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
     LayoutModule,
   ],
   providers: [
+    UserProvider,
     BluetoothSerial,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     

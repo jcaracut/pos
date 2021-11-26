@@ -6,13 +6,17 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "open-ios": "ionic cap open ios",
+    "build-ios": "ionic cap sync ios",
+    "open-android": "ionic cap open android",
+    "build-android": "ionic cap sync android",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^13.0.2",
     "@angular/common": "~12.1.1",
     "@angular/compiler": "~12.1.1",
     "@angular/core": "~12.1.1",

@@ -2,24 +2,31 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Observable } from 'rxjs';
-import { AuthStorageService } from '../services/auth-storage.service';
+import { UserProvider } from '../providers/user.provider';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router, private authStorageSvc: AuthStorageService, private alertController: AlertController,) { }
+  constructor(private router: Router, private alertController: AlertController, private userProvider: UserProvider) { }
 
-  canActivate() {
-    if (this.authStorageSvc.isAuthenticated()) {
-      return true;
-    }
-    // not logged in so redirect to login page with the return url and return false
-    this.router.navigate(['/login']);
-    return false;
+  canActivate(
+    route: ActivatedRouteSnapshot, state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    // return this.userProvider.isAuthenticated();
+
+    return new Promise((resolve, reject) => {
+      this.userProvider.isAuthenticated().then(isAuth => {
+        if (isAuth) {
+          resolve(true)
+        } else {
+          this.router.navigate(['/welcome']);
+          resolve(false);
+        }
+      }).catch(() => reject());
+    })
   }
-
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       header: 'Message',

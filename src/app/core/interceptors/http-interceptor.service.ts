@@ -3,22 +3,22 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, from, throwError } from 'rxjs';
 import { catchError, mergeMap, tap } from 'rxjs/operators';
-import { AuthStorageService } from '../services/auth-storage.service';
+import { UserProvider } from '../providers/user.provider';
 
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
 
-  constructor(private authStorage: AuthStorageService, private router: Router) { }
+  constructor(private userProvider: UserProvider, private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return from(this.authStorage.getToken()).pipe(mergeMap(token => {
+    return from(this.userProvider.GetToken()).pipe(mergeMap(token => {
       if (token) {
         const request = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
 
         return next.handle(request).pipe(catchError((err: any) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
-              this.authStorage.purge();
+              this.userProvider.Clear();
               this.router.navigateByUrl('/login');
             }
             const error = err.error.message || err.statusText;
@@ -27,6 +27,7 @@ export class HttpInterceptorService implements HttpInterceptor {
         }));
       }
       else {
+        console.log(token, 'teokenn nii')
         return next.handle(req);
       }
     }));

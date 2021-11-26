@@ -1,5 +1,20 @@
+
 ion-toolbar {
   --border-width: 0 !important;
+
+  ion-title {
+    display: block;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    pointer-events: auto;
+    padding-left: 75px;
+  }
+}
+
+.grid {
+  padding-top: 120px;
 }
 
 // Removing Android Header Line
@@ -26,6 +41,12 @@ ion-toolbar {
 .form-container ion-item {
   --padding-start: 0;
   --border-color: #dadada;
+
+  height: 45px;
+  margin-bottom: 6px;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 10px 10px 10px 10px;
+  color: rgb(83, 80, 80);
 }
 
 .form-container ion-item ion-label {
@@ -74,11 +95,15 @@ ion-toolbar {
 }
 
 
-.scrollable-true {
-  --offset-bottom: auto !important;
-  --overflow: hidden;
-  overflow: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+.button {
+  width: 100%;
 }
+
+.forgot-password {
+  padding-top: 15px;
+}
+
+.sign-up {
+  padding-top: 25px;
+}
+

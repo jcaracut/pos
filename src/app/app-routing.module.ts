@@ -7,7 +7,7 @@ const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'welcome',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -17,6 +17,7 @@ const routes: Routes = [
   {
     path: '',
     component: WithMenuLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'home',
@@ -31,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    loadChildren: () => import('./features/products/pages/products/products.module').then(m => m.ProductsPageModule)
+    loadChildren: () => import('./features/products/pages/product/product.module').then(m => m.ProductPageModule)
   },
   {
     path: 'checkout',
@@ -39,7 +40,11 @@ const routes: Routes = [
   },
   {
     path: 'welcome',
-    loadChildren: () => import('./features/auth/pages/welcome/welcome.module').then( m => m.WelcomePageModule)
+    loadChildren: () => import('./features/auth/pages/welcome/welcome.module').then( m => m.WelcomePageModule),
+  },
+  {
+    path: 'product',
+    loadChildren: () => import('./features/products/pages/product/product.module').then( m => m.ProductPageModule)
   },
 ];
 

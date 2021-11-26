@@ -25,12 +25,44 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-// ion-searchbar ion-icon {
-//     right: 16px !important;
-//     left: auto !important;
-// }
+ion-content {
+    background: #ffffff;
+}
+
+.scrollable-true {
+    --offset-bottom: auto !important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
 
 .error-message {
     font-size: 16px;
     color: var(--ion-color-danger);
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    --border-radius: 10px;
+    width: 90%;
+    height: 45px;
+}
+
+.swiper-pagination {
+    position: relative;
+    padding-top: 10px;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    height: 14px;
+    width: 14px;
+    padding-top: 10px;
 }

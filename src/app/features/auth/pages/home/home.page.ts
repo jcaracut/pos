@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PrinterProvider } from 'src/app/core/providers/printer.provider';
+import { UserProvider } from 'src/app/core/providers/user.provider';
 
 @Component({
   selector: 'app-home',
@@ -15,34 +16,32 @@ export class HomePage implements OnInit {
 
   options: any = [
     {
-      name: "Customers",
-      icon: "people-outline",
-      url: "customers"
+      icon: "assets/icons/icon_4.png",
+      name: "customers"
     },
     {
-      name: "Products",
-      icon: "pricetags-outline",
-      url: "products"
+      icon: "assets/icons/icon_5.png",
+      name: "products"
     },
     {
-      name: "Sales",
-      icon: "stats-chart-outline",
-      url: "sales"
+      icon: "assets/icons/icon_6.png",
+      name: "sales"
     },
     {
-      name: "Reports",
-      icon: "analytics-outline",
-      url: "reports"
-    }
+      icon: "assets/icons/icon_7.png",
+      name: "reports"
+    },
+    
   ];
 
   list: any = [];
   selectedPrinter: any
 
-  constructor(private printer: PrinterProvider) { }
+  constructor(private printer: PrinterProvider, private userProvider: UserProvider,) { }
 
   async ngOnInit() {
-
+    let user = await this.userProvider.Get()
+    console.log(user, "diriii")
   }
 
   // FOR BLUETOOTH PRINTING

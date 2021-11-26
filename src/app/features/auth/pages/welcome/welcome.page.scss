@@ -1,21 +1,26 @@
 .slide {
-    padding-top: 50px;
+    padding-top: 100px;
     img {
-        height: 270px;
+        height: 280px;
     }
     h1 {
         font-weight: bold;
     }
     p {
+        padding-top: 10px;
         font-size: 16px;
         text-align: center;
     }
 }
+
+.label-login {
+    color: #6b59a6;
+}
 .button-container {
-    align-items: center;
-    justify-content: center;
-    ion-button {
-        --border-radius: 10px;
-        width: 300px;
-    }
+    padding-top: 5px;
+}
+
+.description {
+    padding-left: 20px;
+    padding-right: 20px;
 }

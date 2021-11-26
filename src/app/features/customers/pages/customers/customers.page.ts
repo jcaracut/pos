@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomersPage implements OnInit {
 
+  customers = [];
+
   constructor() { }
 
   ngOnInit() {

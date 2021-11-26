@@ -1,24 +1,25 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Product } from '../../models/Product';
 import { select, Store } from '@ngrx/store';
-import { State } from 'src/app/store/state';
-import * as selectors from 'src/app/store/selectors/root.selectors';
-import * as actions from 'src/app/store/actions';
+import { Subscription } from 'rxjs';
 import { Customer } from 'src/app/features/customers/models/Customer';
 
+import * as actions from 'src/app/store/actions'
+import * as selectors from 'src/app/store/selectors/root.selectors'
+import { State } from 'src/app/store/state';
+import { Product } from '../../models/Product';
+
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.page.html',
-  styleUrls: ['./products.page.scss'],
+  selector: 'app-product',
+  templateUrl: './product.page.html',
+  styleUrls: ['./product.page.scss'],
 })
-export class ProductsPage implements OnInit, OnDestroy {
+export class ProductPage implements OnInit {
 
   products: Product[] = [];
 
   myCart: Product[] = [];
-  customers: Customer[] = [];
+  // customers: Customer[] = [];
 
   isListView: boolean = false;
   isFetching: boolean;
@@ -42,14 +43,15 @@ export class ProductsPage implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.store.pipe(select(selectors.getProducts)).subscribe(products => {
         this.products = products;
+        console.table(this.products)
         this.isFetching = false;
       }, err => {
         this.isFetching = false;
       }),
-      this.store.pipe(select(selectors.getCustomers)).subscribe(customers => {
-        this.customers = customers;
-      }, err => {
-      }),
+      // this.store.pipe(select(selectors.getCustomers)).subscribe(customers => {
+      //   this.customers = customers;
+      // }, err => {
+      // }),
     );
 
     await this.init();
@@ -58,7 +60,7 @@ export class ProductsPage implements OnInit, OnDestroy {
   async init() {
     this.isFetching = true;
     this.store.dispatch(actions.getProducts());
-    this.store.dispatch(actions.getCustomers());
+    // this.store.dispatch(actions.getCustomers());
   }
 
   search(searchText: string) {
@@ -80,4 +82,5 @@ export class ProductsPage implements OnInit, OnDestroy {
   addFavorite(item: Product) {
 
   }
+
 }

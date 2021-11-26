@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { UserProvider } from 'src/app/core/providers/user.provider';
 
 @Component({
   selector: 'app-with-menu-layout',
@@ -11,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class WithMenuLayoutComponent implements OnInit {
 
   routerSubscription: Subscription;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userProvider: UserProvider) { }
 
   public pages = [
     { title: 'Customers', url: '/cutomers', icon: 'mail' },
@@ -25,14 +26,7 @@ export class WithMenuLayoutComponent implements OnInit {
   }
 
   logout(){
+    this.userProvider.Clear();
     this.router.navigateByUrl('login');
   }
-
-  // onClickMenu() {
-  //   this.menu.close();
-  // }
-
-  // ngOnDestroy(): void {
-  // }
-
 }
