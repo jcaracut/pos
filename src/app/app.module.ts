@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { HttpModule } from '@angular/http';
@@ -21,7 +20,6 @@ import { UserProvider } from './core/providers/user.provider';
 
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     HttpModule,
     CoreModule,
     HttpClientModule,

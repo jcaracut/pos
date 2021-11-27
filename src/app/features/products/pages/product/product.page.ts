@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Customer } from 'src/app/features/customers/models/Customer';
@@ -8,6 +9,7 @@ import * as actions from 'src/app/store/actions'
 import * as selectors from 'src/app/store/selectors/root.selectors'
 import { State } from 'src/app/store/state';
 import { Product } from '../../models/Product';
+import { CreateItemComponent } from './components/modals/create-item/create-item.component';
 
 @Component({
   selector: 'app-product',
@@ -28,7 +30,8 @@ export class ProductPage implements OnInit {
 
   constructor(
     private router: Router,
-    private store: Store<State>
+    private store: Store<State>,
+    private modalCtrl: ModalController
   ) { }
 
   ngOnDestroy(): void {
@@ -65,6 +68,14 @@ export class ProductPage implements OnInit {
 
   search(searchText: string) {
     // alert("Search: " + searchText);
+  }
+
+  async addItem(){
+    let modal = await this.modalCtrl.create({
+      component: CreateItemComponent,
+      cssClass: '',
+    });
+    
   }
 
   changeView(isListView: boolean) {

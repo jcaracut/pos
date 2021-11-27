@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Customer } from '../models/Customer';
 
@@ -14,7 +15,10 @@ export class CustomerService {
   
   
   GetCustomers(): Observable<Customer[]>{
-    return this.http.get<Customer[]>(`${this.url}/api/customers`);
+    return this.http.get<Customer[]>(`${this.url}/api/customers`).pipe(map((result:any)=>result.data.customers));
+    
   }
+
+  
 
 }

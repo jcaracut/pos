@@ -18,9 +18,9 @@
   </div>
 
   <ion-list lines="none" class="ion-text-center">
-    <ion-item *ngFor="let item of [1,2,3,4,5,6]" class="customer">
+    <ion-item *ngFor="let customer of customers" class="customer">
       <img height="100" width="100" src="assets/icons/icon_{{item%2 == 1 ? 8:9}}.png" />
-      <ion-label class="customer">Test&nbsp;&nbsp;&nbsp;{{item}}</ion-label>
+      <ion-label class="customer">{{ customer.details.name }}</ion-label>
     </ion-item>
   </ion-list>
 
