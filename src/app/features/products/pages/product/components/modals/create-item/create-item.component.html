@@ -1,17 +1,69 @@
 <ion-header class="ion-no-border ion-text-center">
   <ion-toolbar>
-    <ion-buttons slot="start" [routerLink]="['/home']" routerLinkActive="router-link-active" >
+    <ion-buttons slot="start" (click)="dismissModal()">
       <img height="80" width="80" src="assets/icons/home.png" alt="menu">
     </ion-buttons>
     <ion-title>Create Item</ion-title>
-    <ion-buttons slot="start">
+    <ion-buttons slot="end">
       Save
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-item>
-    <ion-label>Name</ion-label>
-  </ion-item>
+<ion-content class="scrollable-true" [fullscreen]='true'>
+  <ion-list lines='none'>
+    <ion-item>
+      <ion-label class='label' position="floating">Name</ion-label>
+      <ion-input class="input"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label class='label' position="floating">Category</ion-label>
+      <ion-select interface="popover" value="1" placeholder="">
+        <ion-select-option value="1">No Category</ion-select-option>
+        <ion-select-option value="2">Clothing</ion-select-option>
+      </ion-select>
+    </ion-item><br>
+    <ion-item>
+      <ion-list>
+        <ion-radio-group name="auto" value="each">
+          <ion-label>Sold by</ion-label>
+          <ion-item>
+            <ion-radio value="each"></ion-radio>
+            <ion-label>Each</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-radio value="weight"></ion-radio>
+            <ion-label>Weight</ion-label>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-item>
+    <ion-item>
+      <ion-label class='label' position="floating">Price</ion-label>
+      <ion-input class="input"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class='label' position="floating">Cost</ion-label>
+      <ion-input class="input"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class='label' position="floating">SKU</ion-label>
+      <ion-input class="input"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class='label' position="floating">Barcode</ion-label>
+      <ion-input class="input"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label class='label'>Inventory</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Track Stock</ion-label>
+      <ion-toggle slot='end'></ion-toggle>
+    </ion-item>
+
+  </ion-list>
+
 </ion-content>

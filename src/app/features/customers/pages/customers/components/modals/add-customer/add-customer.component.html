@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border ion-text-center">
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="dismissModal()">
+      <img height="80" width="80" src="assets/icons/home.png" alt="menu">
+    </ion-buttons>
+    <ion-title>Add Customer</ion-title>
+    <ion-buttons slot="end">
+      Save
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="scrollable-true" [fullscreen]='true'>
+  <ion-list lines='none'>
+    <div class="ion-padding">
+      <ion-label>Customer Name</ion-label>
+      <ion-input class="input" placeholder="Customer Name"></ion-input>
+    </div>
+    <div class="ion-padding">
+      <ion-label>Contact No</ion-label>
+      <ion-input class="input" placeholder="Contact No"></ion-input>
+    </div>
+    <div class="ion-padding">
+      <ion-label class='label' position="floating">Gender</ion-label>
+      <ion-select class="input" interface="popover" value="1" placeholder="">
+        <ion-select-option value="1">Male</ion-select-option>
+        <ion-select-option value="2">Female</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="ion-padding">
+      <ion-label>Customer Email</ion-label>
+      <ion-input class="input" placeholder="Customer Email"></ion-input>
+    </div>
+    <div class="ion-padding">
+      <ion-label>Mailing Address</ion-label>
+      <ion-input class="input" placeholder="Mailing Address"></ion-input>
+    </div>
+    <div class="ion-padding">
+      <ion-label>Notes</ion-label>
+      <ion-textarea class="input" placeholder="Notes"></ion-textarea>
+    </div>
+    <div class="ion-padding">
+      <ion-label>Advance Paid</ion-label>
+      <ion-input class="input" placeholder="Contact No"></ion-input>
+    </div>
+    <div class="ion-padding">
+      <ion-input type='file' class="input" placeholder="Choose Customer Image"></ion-input>
+    </div>
+
+    
+  </ion-list>
+
+</ion-content>

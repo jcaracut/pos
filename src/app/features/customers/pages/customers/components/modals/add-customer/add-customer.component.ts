@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-create-item',
-  templateUrl: './create-item.component.html',
-  styleUrls: ['./create-item.component.scss'],
+  selector: 'add-customer-modal',
+  templateUrl: './add-customer.component.html',
+  styleUrls: ['./add-customer.component.scss'],
 })
-export class CreateItemComponent implements OnInit {
+export class AddCustomerComponent implements OnInit {
 
   constructor(private modalCtrl: ModalController) { }
 
@@ -15,5 +15,7 @@ export class CreateItemComponent implements OnInit {
   dismissModal() {
     this.modalCtrl.dismiss();
   }
+
+  
 
 }

@@ -5,6 +5,8 @@ import { State } from 'src/app/store/state';
 import { Customer } from '../../models/Customer';
 import * as actions from 'src/app/store/actions';
 import * as selectors from 'src/app/store/selectors/root.selectors';
+import { ModalController } from '@ionic/angular';
+import { AddCustomerComponent } from './components/modals/add-customer/add-customer.component';
 
 @Component({
   selector: 'app-customers',
@@ -17,13 +19,18 @@ export class CustomersPage implements OnInit {
   isFetching = false;
   customers: Customer [] = [];
 
-  constructor(private store: Store<State>) { }
+  constructor(
+    private store: Store<State>,
+    private modalCtrl: ModalController
+    ) { }
 
   async ngOnInit() {
     this.subscriptions.push(
       this.store.pipe(select(selectors.getCustomers)).subscribe(customers => {
         this.customers = customers;
+        this.isFetching = false;
       }, err => {
+        this.isFetching = false;
       }),
     );
 
@@ -33,6 +40,14 @@ export class CustomersPage implements OnInit {
   async init() {
     this.isFetching = true;
     this.store.dispatch(actions.getCustomers());
+  }
+
+  async openAddCustomerModal(){
+    let modal = await this.modalCtrl.create({
+      component: AddCustomerComponent,
+      cssClass: '',
+    });
+    modal.present();
   }
 
 }

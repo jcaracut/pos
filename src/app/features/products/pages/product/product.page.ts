@@ -20,9 +20,6 @@ export class ProductPage implements OnInit {
 
   products: Product[] = [];
 
-  myCart: Product[] = [];
-  // customers: Customer[] = [];
-
   isListView: boolean = false;
   isFetching: boolean;
 
@@ -46,7 +43,6 @@ export class ProductPage implements OnInit {
     this.subscriptions.push(
       this.store.pipe(select(selectors.getProducts)).subscribe(products => {
         this.products = products;
-        console.table(this.products)
         this.isFetching = false;
       }, err => {
         this.isFetching = false;
@@ -70,28 +66,28 @@ export class ProductPage implements OnInit {
     // alert("Search: " + searchText);
   }
 
-  async addItem(){
+  async openAddItemModal(){
     let modal = await this.modalCtrl.create({
       component: CreateItemComponent,
       cssClass: '',
     });
-    
+    modal.present();
   }
 
-  changeView(isListView: boolean) {
-    this.isListView = isListView;
-  }
+  // changeView(isListView: boolean) {
+  //   this.isListView = isListView;
+  // }
 
-  checkout(url: string) {
-    this.router.navigateByUrl(url);
-  }
+  // checkout(url: string) {
+  //   this.router.navigateByUrl(url);
+  // }
 
-  addToCart(item: Product) {
-    this.myCart.push(item);
-  }
+  // addToCart(item: Product) {
+  //   this.myCart.push(item);
+  // }
 
-  addFavorite(item: Product) {
+  // addFavorite(item: Product) {
 
-  }
+  // }
 
 }

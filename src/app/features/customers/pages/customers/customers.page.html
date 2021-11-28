@@ -6,26 +6,44 @@
     <ion-title>Customers({{customers.length}})</ion-title>
   </ion-toolbar>
 </ion-header>
+<div class="search-container">
+  <ion-item class="search">
+    &nbsp;&nbsp;
+    <ion-input placeholder="Search..." type="text"></ion-input>
+    <ion-icon name="search-outline"></ion-icon>
+  </ion-item>
+</div>
+<ion-content>
+  <ng-container [ngTemplateOutlet]="isFetching ? loading : displayResults">
+  </ng-container>
+  
+  <ng-template #displayResults>
+    <ng-container [ngTemplateOutlet]="customers.length > 0 ? viewCustomers : noCustomers">
+    </ng-container>
+  </ng-template>
 
-<ion-content [fullscreen]='true'>
+  <ng-template #viewCustomers>
+    <ion-list lines="none" class="ion-text-center">
+      <ion-item *ngFor="let customer of customers; let i = index" class="customer">
+        <img height="100" width="100" src="assets/icons/icon_{{i%2 == 1 ? 8:9}}.png" />
+        <ion-label class="customer">{{ customer.details.name }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-template>
 
-  <div class="search-container">
-    <ion-item class="search">
-      &nbsp;&nbsp;
-      <ion-input placeholder="Search..." type="text"></ion-input>
-      <ion-icon name="search-outline"></ion-icon>
+  <ng-template #loading>
+    <customer-loading></customer-loading>
+  </ng-template>
+
+  <ng-template #noCustomers>
+    <ion-item lines="none" class="ion-text-center">
+      <ion-label>No Products found.</ion-label>
     </ion-item>
-  </div>
-
-  <ion-list lines="none" class="ion-text-center">
-    <ion-item *ngFor="let customer of customers" class="customer">
-      <img height="100" width="100" src="assets/icons/icon_{{item%2 == 1 ? 8:9}}.png" />
-      <ion-label class="customer">{{ customer.details.name }}</ion-label>
-    </ion-item>
-  </ion-list>
+  </ng-template>
+  
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button (click)="openAddCustomerModal()">
       <ion-icon style="font-size: 35px;" name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

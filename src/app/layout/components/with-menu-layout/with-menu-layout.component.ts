@@ -16,12 +16,12 @@ export class WithMenuLayoutComponent implements OnInit {
 
   public pages = [
     { title: 'Sales', url: '/sales', icon: 'heart' },
-    { title: 'Customers', url: '/cutomers', icon: 'mail' },
+    { title: 'Customers', url: '/customers', icon: 'mail' },
     { title: 'Reciepts', url: '/reciepts', icon: 'heart' },
     { title: 'Products', url: '/products', icon: 'paper-plane' },
     { title: 'Reports', url: '/reports', icon: 'archive' },
   ];
-  public labels = [ 'Settings', 'Logout',];
+  // public labels = [ 'Settings', 'Logout',];
 
   ngOnInit() {
   }

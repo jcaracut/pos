@@ -1,32 +1,50 @@
 <ion-header class="ion-no-border ion-text-center">
   <ion-toolbar>
-    <ion-buttons slot="start" [routerLink]="['/home']" routerLinkActive="router-link-active" >
+    <ion-buttons slot="start" [routerLink]="['/home']" routerLinkActive="router-link-active">
       <img height="80" width="80" src="assets/icons/home.png" alt="menu">
     </ion-buttons>
     <ion-title>Products</ion-title>
   </ion-toolbar>
 </ion-header>
+<div class="search-container">
+  <ion-item class="search">
+    &nbsp;&nbsp;
+    <ion-input placeholder="Search..." type="text"></ion-input>
+    <ion-icon name="search-outline"></ion-icon>
+  </ion-item>
+</div>
+<ion-content >
 
-<ion-content [fullscreen]='true'>
+  <ng-container [ngTemplateOutlet]="isFetching ? loading : displayResults">
+  </ng-container>
+  
+  <ng-template #displayResults>
+    <ng-container [ngTemplateOutlet]="products.length > 0 ? viewProducts : noProducts">
+    </ng-container>
+  </ng-template>
 
-  <div class="search-container">
-    <ion-item class="search">
-      &nbsp;&nbsp;
-      <ion-input placeholder="Search..." type="text"></ion-input>
-      <ion-icon name="search-outline"></ion-icon>
+  <ng-template #viewProducts>
+    <ion-list lines="none" class="ion-text-center">
+      <ion-item *ngFor="let item of products" class="product ion-vertical-margin">
+        <img height="60" width="60" [src]="item.avatar" />
+        <ion-label class="products">{{item.name }}</ion-label>
+        <ion-label slot="end">{{ item.srp_price.toLocaleString() }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+
+  <ng-template #loading>
+    <item-loading></item-loading>
+  </ng-template>
+
+  <ng-template #noProducts>
+    <ion-item lines="none" class="ion-text-center">
+      <ion-label>No Products found.</ion-label>
     </ion-item>
-  </div>
-
-  <ion-list lines="none" class="ion-text-center">
-    <ion-item *ngFor="let item of products" class="product">
-      <img height="60" width="60" [src]="item.avatar" />
-      <ion-label class="products">{{item.name }}</ion-label>
-      <ion-label slot="end">{{ item.srp_price.toLocaleString() }}</ion-label>
-    </ion-item>
-  </ion-list>
+  </ng-template>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addItem()">
+    <ion-fab-button (click)="openAddItemModal()">
       <ion-icon style="font-size: 35px;" name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
