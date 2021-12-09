@@ -2,7 +2,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, Htt
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, from, throwError } from 'rxjs';
-import { catchError, mergeMap, tap } from 'rxjs/operators';
+import { catchError, mergeMap } from 'rxjs/operators';
 import { UserProvider } from '../providers/user.provider';
 
 @Injectable()
@@ -27,7 +27,6 @@ export class HttpInterceptorService implements HttpInterceptor {
         }));
       }
       else {
-        console.log(token, 'teokenn nii')
         return next.handle(req);
       }
     }));

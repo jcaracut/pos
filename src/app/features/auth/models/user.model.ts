@@ -1,10 +1,13 @@
 export interface User {
-    user: UserDetail,
+    user: Detail,
     token: string
 }
 
-interface UserDetail {
+export interface Detail {
+    details: UserDetail
+}
 
+interface UserDetail {
     email: string,
     status: string,
     profile: UserProfile,

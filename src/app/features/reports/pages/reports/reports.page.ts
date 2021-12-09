@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-import 
-  Chart
+import
+Chart
   // ArcElement,
   // LineElement,
   // BarElement,
@@ -26,30 +26,40 @@ import
   // Title,
   // Tooltip,
   // SubTitle
-from 'chart.js/auto';
+  from 'chart.js/auto';
+import { UserProvider } from 'src/app/core/providers/user.provider';
+import { Detail } from 'src/app/features/auth/models/user.model';
 
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.page.html',
   styleUrls: ['./reports.page.scss'],
 })
-export class ReportsPage implements AfterViewInit {
+export class ReportsPage implements OnInit, AfterViewInit {
 
   // @ViewChild('barCanvas') private barCanvas: ElementRef;
-  @ViewChild('doughnutCanvas') private doughnutCanvas: ElementRef;
-  // @ViewChild('lineCanvas') private lineCanvas: ElementRef;
+  @ViewChild('sales') private salesCanvas: ElementRef;
+  @ViewChild('profits') private profitsCanvas: ElementRef;
+  @ViewChild('orders') private ordersCanvas: ElementRef; 
 
+  user: Detail
   barChart: any;
-  doughnutChart: any;
+  salesChart: any;
+  profitsChart: any;
+  ordersChart: any;
   lineChart: any;
 
-  constructor() { }
+  constructor(private userProvider: UserProvider) { }
+
+  async ngOnInit() {
+    this.user = await (await this.userProvider.Get()).user;
+  }
 
   // When we try to call our chart to initialize methods in ngOnInit() it shows an error nativeElement of undefined. 
   // So, we need to call all chart methods in ngAfterViewInit() where @ViewChild and @ViewChildren will be resolved.
   ngAfterViewInit() {
     // this.barChartMethod();
-    this.doughnutChartMethod();
+    this.initDoughnutCharts();
     // this.lineChartMethod();
   }
 
@@ -93,31 +103,62 @@ export class ReportsPage implements AfterViewInit {
   //   });
   // }
 
-  doughnutChartMethod() {
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+  initDoughnutCharts() {
+    this.salesChart = new Chart(this.salesCanvas.nativeElement, {
       type: 'doughnut',
       data: {
-        labels: ['BJP', 'Congress', 'AAP', 'CPM', 'SP'],
+        // labels: ['BJP', 'Congress', 'AAP', 'CPM', 'SP'],
         datasets: [{
           label: '# of Votes',
-          data: [50, 29, 15, 10, 7],
+          data: [55, 100-55],
           backgroundColor: [
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'
+            'green',
+            'transparent',
           ],
-          hoverBackgroundColor: [
-            '#FFCE56',
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56',
-            '#FF6384'
-          ]
+          // hoverBackgroundColor: [
+          //   '#FFCE56',
+          //   '#FF6384',
+          // ]
         }]
       }
     });
+    this.profitsChart = new Chart(this.profitsCanvas.nativeElement, {
+      type: 'doughnut',
+      data: {
+        // labels: ['BJP', 'Congress', 'AAP', 'CPM', 'SP'],
+        datasets: [{
+          label: '# of Votes',
+          data: [55, 100-55],
+          backgroundColor: [
+            'green',
+            'transparent',
+          ],
+          // hoverBackgroundColor: [
+          //   '#FFCE56',
+          //   '#FF6384',
+          // ]
+        }]
+      }
+    });
+    this.ordersChart = new Chart(this.ordersCanvas.nativeElement, {
+      type: 'doughnut',
+      data: {
+        // labels: ['BJP', 'Congress', 'AAP', 'CPM', 'SP'],
+        datasets: [{
+          label: '# of Votes',
+          data: [55, 100-55],
+          backgroundColor: [
+            'green',
+            'transparent',
+          ],
+          // hoverBackgroundColor: [
+          //   '#FFCE56',
+          //   '#FF6384',
+          // ]
+        }]
+      }
+    });
+
   }
 
   // lineChartMethod() {

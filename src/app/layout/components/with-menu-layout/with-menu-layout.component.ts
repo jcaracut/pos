@@ -15,11 +15,11 @@ export class WithMenuLayoutComponent implements OnInit {
   constructor(private router: Router, private userProvider: UserProvider) { }
 
   public pages = [
-    { title: 'Sales', url: '/sales', icon: 'heart' },
-    { title: 'Customers', url: '/customers', icon: 'mail' },
-    { title: 'Reciepts', url: '/reciepts', icon: 'heart' },
-    { title: 'Products', url: '/products', icon: 'paper-plane' },
-    { title: 'Reports', url: '/reports', icon: 'archive' },
+    { title: 'Sales', url: '/sales', icon: 'assets/icons/sales_icon.png' },
+    { title: 'Customers', url: '/customers', icon: 'assets/icons/customer_icon.png' },
+    { title: 'Reciepts', url: '/reciepts', icon: 'assets/icons/reciepts_icon.png' },
+    { title: 'Products', url: '/products', icon: 'assets/icons/product_icon.png' },
+    { title: 'Reports', url: '/reports', icon: 'assets/icons/report_icon.png' },
   ];
   // public labels = [ 'Settings', 'Logout',];
 

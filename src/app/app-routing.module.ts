@@ -46,6 +46,10 @@ const routes: Routes = [
     path: 'reports',
     loadChildren: () => import('./features/reports/pages/reports/reports.module').then( m => m.ReportsPageModule)
   },
+  {
+    path: 'sales-revenue',
+    loadChildren: () => import('./features/reports/pages/sales-revenue/sales-revenue.module').then( m => m.SalesRevenuePageModule)
+  },
 ];
 
 @NgModule({

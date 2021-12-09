@@ -41,7 +41,7 @@ export class HomePage implements OnInit {
 
   async ngOnInit() {
     let user = await this.userProvider.Get()
-    console.log(user, "diriii")
+    // console.log(user, "diriii")
   }
 
   // FOR BLUETOOTH PRINTING

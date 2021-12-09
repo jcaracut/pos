@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ReportsPageRoutingModule } from './reports-routing.module';
 
 import { ReportsPage } from './reports.page';
+import { GetFirstnamePipe } from 'src/app/core/pipes/get-firstname.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +16,9 @@ import { ReportsPage } from './reports.page';
     IonicModule,
     ReportsPageRoutingModule
   ],
-  declarations: [ReportsPage]
+  declarations: [
+    ReportsPage,
+    GetFirstnamePipe,
+  ]
 })
 export class ReportsPageModule {}
