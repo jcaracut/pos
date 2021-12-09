@@ -12,11 +12,11 @@ import { Product } from '../../models/Product';
 import { CreateItemComponent } from './components/modals/create-item/create-item.component';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.page.html',
-  styleUrls: ['./product.page.scss'],
+  selector: 'app-products',
+  templateUrl: './products.page.html',
+  styleUrls: ['./products.page.scss'],
 })
-export class ProductPage implements OnInit {
+export class ProductsPage implements OnInit {
 
   products: Product[] = [];
 

@@ -17,6 +17,6 @@ import { CustomerLoadingComponent } from './components/loading/item-loading/cust
     IonicModule,
     CustomersPageRoutingModule
   ],
-  declarations: [CustomersPage, CustomerLoadingComponent]
+  declarations: [CustomersPage, CustomerLoadingComponent, AddCustomerComponent]
 })
 export class CustomersPageModule {}

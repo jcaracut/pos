@@ -32,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    loadChildren: () => import('./features/products/pages/product/product.module').then(m => m.ProductPageModule)
+    loadChildren: () => import('./features/products/pages/products/products.module').then(m => m.ProductsPageModule)
   },
   {
     path: 'checkout',
@@ -43,8 +43,8 @@ const routes: Routes = [
     loadChildren: () => import('./features/auth/pages/welcome/welcome.module').then( m => m.WelcomePageModule),
   },
   {
-    path: 'product',
-    loadChildren: () => import('./features/products/pages/product/product.module').then( m => m.ProductPageModule)
+    path: 'reports',
+    loadChildren: () => import('./features/reports/pages/reports/reports.module').then( m => m.ReportsPageModule)
   },
 ];
 
