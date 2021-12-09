@@ -1,9 +1,41 @@
-<ion-header>
+<ion-header class="ion-no-border ion-text-center">
   <ion-toolbar>
-    <ion-title>sales-revenue</ion-title>
+    <ion-buttons slot="start" [routerLink]="['/home']" routerLinkActive="router-link-active">
+      <img height="80" width="80" src="assets/icons/home.png" alt="menu">
+    </ion-buttons>
+    <ion-title>Reports</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true" class="scrollable-true">
+  <ion-card>
+    <ion-card-content>
+      <canvas #barCanvas style="position: relative; max-height:20vh; width:20vw"></canvas>
+    </ion-card-content>
+  </ion-card>
+  <div class="ion-padding">
+    <ion-item lines='none'>
+      <h2>Sales Revenue</h2>
+    </ion-item>
+  </div>
+  <ion-grid class="grid">
+    <ion-row>
+      <ion-col *ngFor="let item of labels;let i = index;" size="6" class="ion-padding">
+        <!-- <div [routerLink]="['/' + item.name]" routerLinkActive="router-link-active"> -->
+        <div class="card">
+          <img height="40" width="40" [src]="item.icon" alt="{{ item.title }}">
+          <ion-label class="value">{{ item.value }}</ion-label>
+          <ion-label class="title">{{ item.title }}</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-card>
+      <ion-card-header>
+        Bar Chart
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barCanvas style="position: relative; height:20vh; width:40vw"></canvas>
+      </ion-card-content>
+    </ion-card> -->
 </ion-content>

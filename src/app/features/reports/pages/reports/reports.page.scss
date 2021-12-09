@@ -5,10 +5,29 @@
 
 .welcome-mgs {
     color: grey;
+    font-size: 14px;
+}
+
+.row-1  {
+    margin-top: 20px;
+    border-radius: 25px;
+    height: 120px;
+    background-color: #EDE4F1;
 }
 
 .row  {
-    border-radius: 20px;
+    margin-top: 50px;
+    border-radius: 25px;
     height: 120px;
     background-color: #EDE4F1;
+}
+
+.amount {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.light-label {
+    font-size: 14px;
+    color: grey;
 }
