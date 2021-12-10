@@ -29,6 +29,31 @@ ion-content {
     background: #ffffff;
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    .search {
+        --highlight-color-focused: transparent;
+        --padding-start: 0;
+        --border-color: transparent;
+        height: 50px;
+        width: 80%;
+        margin-bottom: 6px;
+        border: 2px solid rgb(131, 131, 131);
+        border-radius: 25px;
+        color: rgb(83, 80, 80);
+
+    }
+}
+
+.toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .scrollable-true {
     --offset-bottom: auto !important;
     --overflow: hidden;

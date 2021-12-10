@@ -12,7 +12,11 @@ import { UserProvider } from 'src/app/core/providers/user.provider';
 export class WithMenuLayoutComponent implements OnInit {
 
   routerSubscription: Subscription;
-  constructor(private router: Router, private userProvider: UserProvider) { }
+  constructor(
+    private router: Router, 
+    private userProvider: UserProvider,
+    private menuCtrl: MenuController,
+    ) { }
 
   public pages = [
     { title: 'Sales', url: '/sales', icon: 'assets/icons/sales_icon.png' },
@@ -29,5 +33,9 @@ export class WithMenuLayoutComponent implements OnInit {
   logout(){
     this.userProvider.Clear();
     this.router.navigateByUrl('login');
+  }
+
+  goToSettings() {
+    this.router.navigateByUrl('settings');
   }
 }

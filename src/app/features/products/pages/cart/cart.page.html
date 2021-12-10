@@ -1,0 +1,29 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color='light'>
+    <ion-buttons slot="start" [routerLink]="['/home']" routerLinkActive="router-link-active">
+      <img height="80" width="80" src="assets/icons/home.png" alt="menu">
+    </ion-buttons>
+    <!-- <ion-title>Title</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+<div class="search-container">
+  <ion-item class="search">
+    &nbsp;&nbsp;
+    <ion-input placeholder="Search..." type="text"></ion-input>
+    <ion-icon name="search-outline"></ion-icon>
+  </ion-item>
+</div>
+<div class="search-container">
+  <ion-label class="total-amount">TOTAL <br>45.00</ion-label>
+</div>
+<div class="category">
+  <ion-item>
+    <ion-select class="input" interface="popover" value="1" placeholder="">
+      <ion-select-option value="1">All Items</ion-select-option>
+      <ion-select-option value="2">Test</ion-select-option>
+    </ion-select>
+  </ion-item>
+</div>
+<ion-content>
+
+</ion-content>

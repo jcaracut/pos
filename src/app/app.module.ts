@@ -15,7 +15,9 @@ import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
 import { UserProvider } from './core/providers/user.provider';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+  ],
   entryComponents: [],
 
   imports: [

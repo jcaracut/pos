@@ -1,11 +1,12 @@
-<ion-header class="ion-no-border ion-text-center">
-  <ion-toolbar>
-    <ion-buttons slot="start" [routerLink]="['/home']" routerLinkActive="router-link-active" >
+<ion-header class="ion-no-border">
+  <ion-toolbar color='light'>
+    <ion-buttons slot="start" [routerLink]="['/home']" routerLinkActive="router-link-active">
       <img height="80" width="80" src="assets/icons/home.png" alt="menu">
     </ion-buttons>
     <ion-title>Customers({{customers.length}})</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <div class="search-container">
   <ion-item class="search">
     &nbsp;&nbsp;

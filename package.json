@@ -7,10 +7,10 @@
     "start": "ionic serve",
     "aot": "ionic serve --aot",
     "open-ios": "ionic cap open ios",
-    "build-ios": "ionic cap sync ios",
+    "build-ios": "ionic build && ionic cap sync ios",
     "build-ios-prod": "ionic cap sync ios --prod --release",
     "open-android": "ionic cap open android",
-    "build-android": "ionic cap sync android",
+    "build-android": "ionic build && ionic cap sync android",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

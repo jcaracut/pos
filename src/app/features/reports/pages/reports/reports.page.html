@@ -1,5 +1,5 @@
-<ion-header class="ion-no-border ion-text-center">
-  <ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-toolbar color='light'>
     <ion-buttons slot="start" [routerLink]="['/home']" routerLinkActive="router-link-active">
       <img height="80" width="80" src="assets/icons/home.png" alt="menu">
     </ion-buttons>
@@ -18,7 +18,7 @@
   <div class="ion-padding">
     <div>
       <ion-grid fixed>
-        <ion-row class="row-1">
+        <ion-row class="row-1" [routerLink]="['/sales-revenue']">
           <ion-col size="7" class="ion-padding ion-margin-vertical">
             <ion-label class="light-label">Total Sales Today</ion-label><br>
             <ion-label class="amount">$500</ion-label>

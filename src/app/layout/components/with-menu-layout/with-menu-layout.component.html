@@ -1,12 +1,12 @@
 <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
+    <ion-menu [menuId]="menu" contentId="main-content" type="overlay">
         <ion-content class="ion-no-padding scrollable-true">
-            <ion-list id="inbox-list">
+            <ion-list id="inbox-list" lines="none">
                 <!-- <ion-list-header>The Society 32</ion-list-header>
                 <ion-note>support@thesociety32.com</ion-note> -->
 
                 <ion-menu-toggle auto-hide="false" *ngFor="let p of pages; let i = index">
-                    <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+                    <ion-item routerDirection="root" [routerLink]="[p.url]"  detail="false"
                         routerLinkActive="selected">
                         <img height="50" width="50" [src]="p.icon" alt="{{ p.title }}">
                         <ion-label class="ion-padding-horizontal">{{ p.title }}</ion-label>
@@ -16,7 +16,7 @@
             <ion-item>
             </ion-item>
             <ion-list id="labels-list">
-                <ion-item lines="none">
+                <ion-item (click)="goToSettings()" lines="none">
                     <img height="50" width="50" src="assets/icons/settings_icon.png" alt="Settings">
                     <ion-label class="ion-padding-horizontal">Settings</ion-label>
                 </ion-item>

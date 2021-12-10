@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('./features/auth/pages/home/home.module').then(m => m.HomePageModule),
         // canActivate: [AuthGuard]
       },
+      {
+        path: 'settings',
+        loadChildren: () => import('./features/auth/pages/settings/settings.module').then( m => m.SettingsPageModule)
+      },
     ]
   },
   {
@@ -50,6 +54,11 @@ const routes: Routes = [
     path: 'sales-revenue',
     loadChildren: () => import('./features/reports/pages/sales-revenue/sales-revenue.module').then( m => m.SalesRevenuePageModule)
   },
+  {
+    path: 'cart',
+    loadChildren: () => import('./features/products/pages/cart/cart.module').then( m => m.CartPageModule)
+  },
+  
 ];
 
 @NgModule({

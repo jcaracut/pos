@@ -6,7 +6,7 @@ import { GetFirstnamePipe } from './pipes/get-firstname.pipe';
 
 @NgModule({
   declarations: [
-    GetFirstnamePipe
+    // GetFirstnamePipe
   ],
   imports: [
     CommonModule
