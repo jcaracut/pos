@@ -28,6 +28,10 @@ const routes: Routes = [
         path: 'settings',
         loadChildren: () => import('./features/auth/pages/settings/settings.module').then( m => m.SettingsPageModule)
       },
+      {
+        path: 'checkout',
+        loadChildren: () => import('./features/products/pages/checkout/checkout.module').then(m => m.CheckoutPageModule)
+      },
     ]
   },
   {
@@ -38,10 +42,7 @@ const routes: Routes = [
     path: 'products',
     loadChildren: () => import('./features/products/pages/products/products.module').then(m => m.ProductsPageModule)
   },
-  {
-    path: 'checkout',
-    loadChildren: () => import('./features/products/pages/checkout/checkout.module').then(m => m.CheckoutPageModule)
-  },
+  
   {
     path: 'welcome',
     loadChildren: () => import('./features/auth/pages/welcome/welcome.module').then( m => m.WelcomePageModule),

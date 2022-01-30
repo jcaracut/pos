@@ -24,6 +24,17 @@
     </ion-select>
   </ion-item>
 </div>
+<div>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of [1,1,1,1];let i = index;" size="6" class="item-container ion-padding">
+        <div class="item-list" [routerLink]="['/' + item]" routerLinkActive="router-link-active">
+          <!-- <img [src]="item" >Tests -->test
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
 <ion-content>
 
 </ion-content>

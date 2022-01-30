@@ -18,5 +18,27 @@
     height: 50px;
     width: 80%;
     margin-top: 15px;
+    margin-left: 35px;
     font-size: 14px;
+}
+
+.grid {
+    padding-top: 10px;
+}
+
+.item-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 150px;
+    border-radius: 15px;
+    background-color: var(--ion-color-tertiary);
+
 }
